@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="dashboard">
+        <header class="header glass">
+            <div class="header-left">
+                <h1>Productivity Dashboard</h1>
+                <p id="greeting">Good Morning!</p>
+            </div>
+            <div class="header-right">
+                <div class="date-box">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <span id="currentDate">
+                        Monday, July 14
+                    </span>
+                </div>
+                <div class="time-box">
+                    <i class="fa-solid fa-clock"></i>
+                    <span id="currentTime">
+                        09:45 AM
+                    </span>
+                </div>
+            </div>
+        </header>
+        <section class="top-widgets">
+            <div class="glass weather-card">
+                <div class="card-header">
+                    <h2>Weather</h2>
+                    <i class="fa-solid fa-cloud-sun"></i>
+                </div>
+                <h1 id="temperature">28°C</h1>
+                <p id="location">
+                    Guwahati
+                </p>
+                <small id="weatherCondition">
+                    Cloudy
+                </small>
+            </div>
+            <div class="glass quote-card">
+                <div class="card-header">
+                    <h2>Motivation</h2>
+                </div>
+                <blockquote id="quote">
+                    "Success is the sum of small efforts repeated every day."
+                </blockquote>
+                <p id="author">
+                    — Robert Collier
+                </p>
+            </div>
+        </section>
+        <section class="features">
+            <div class="glass feature-card" data-feature="todo">
+                <i class="fa-solid fa-list-check"></i>
+                <h3>Todo List</h3>
+                <p>
+                    Manage your daily tasks
+                </p>
+            </div>
+
+            <div class="glass feature-card" data-feature="planner">
+                <i class="fa-solid fa-calendar"></i>
+                <h3>Daily Planner</h3>
+                <p>
+                    Organize your schedule
+                </p>
+            </div>
+
+            <div class="glass feature-card" data-feature="goals">
+                <i class="fa-solid fa-bullseye"></i>
+                <h3>Daily Goals</h3>
+                <p>
+                    Track your progress
+                </p>
+            </div>
+            <div class="glass feature-card" data-feature="pomodoro">
+                <i class="fa-solid fa-stopwatch"></i>
+                <h3>Pomodoro</h3>
+                <p>
+                    Stay focused
+                </p>
+            </div>
+
+            <div class="glass feature-card" data-feature="quotes">
+                <i class="fa-solid fa-lightbulb"></i>
+                <h3>Quotes</h3>
+                <p>
+                    Get inspired
+                </p>
+            </div>
+            <div class="glass feature-card" data-feature="theme">
+                <i class="fa-solid fa-moon"></i>
+                <h3>Theme</h3>
+                <p>
+                    Light / Dark Mode
+                </p>
+            </div>
+        </section>
+
+    </main>
+    <!-- ============================= -->
+<!-- TODO PAGE -->
+<!-- ============================= -->
+
+<section class="feature-page hidden" id="todoPage">
+
+    <button class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i>
+        Dashboard
+    </button>
+
+    <div class="todo-wrapper glass">
+
+        <h2>📝 Todo List</h2>
+
+        <p class="todo-subtitle">
+            Stay organized and finish your daily tasks.
+        </p>
+
+        <!-- Add Task -->
+
+        <div class="todo-input-box">
+
+            <input
+                type="text"
+                id="taskInput"
+                placeholder="Enter a new task..."
+            >
+
+            <button id="addTaskBtn">
+                <i class="fa-solid fa-plus"></i>
+                Add
+            </button>
+
+        </div>
+
+        <!-- Task Counter -->
+
+        <div class="task-info">
+
+            <span id="taskCount">
+                Total Tasks : 0
+            </span>
+
+        </div>
+
+        <!-- Empty State -->
+
+        <div class="empty-state" id="emptyState">
+
+            <i class="fa-solid fa-clipboard-list"></i>
+
+            <h3>No Tasks Yet</h3>
+
+            <p>Add your first task to get started.</p>
+
+        </div>
+
+        <!-- Task List -->
+
+        <ul id="taskList">
+
+            <!-- JavaScript will create tasks here -->
+
+        </ul>
+
+    </div>
+
+</section>
+    <!-- ==========================
+     DAILY PLANNER
+=========================== -->
+
+<section class="feature-page hidden" id="plannerPage">
+
+    <button class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i>
+        Dashboard
+    </button>
+
+    <div class="planner-wrapper glass">
+
+        <h2>📅 Daily Planner</h2>
+
+        <p class="planner-subtitle">
+            Plan your day hour by hour.
+        </p>
+
+        <div class="planner-container" id="plannerContainer">
+
+            <!-- Generated by JavaScript -->
+
+        </div>
+
+    </div>
+
+</section>
+
+   <!-- ==========================
+     DAILY GOALS
+========================== -->
+
+<section class="feature-page hidden" id="goalsPage">
+
+    <button class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i>
+        Dashboard
+    </button>
+
+    <div class="goals-wrapper glass">
+
+        <h2>🎯 Daily Goals</h2>
+
+        <p class="goals-subtitle">
+            Small goals every day lead to big achievements.
+        </p>
+
+        <!-- Progress -->
+
+        <div class="progress-container">
+
+            <div class="progress-header">
+
+                <span>Today's Progress</span>
+
+                <span id="goalProgressText">
+                    0 / 0
+                </span>
+
+            </div>
+
+            <div class="progress-bar">
+
+                <div
+                    class="progress-fill"
+                    id="progressFill"
+                ></div>
+
+            </div>
+
+        </div>
+
+        <!-- Input -->
+
+        <div class="goal-input-box">
+
+            <input
+                type="text"
+                id="goalInput"
+                placeholder="Enter today's goal..."
+            >
+
+            <button id="addGoalBtn">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Add
+
+            </button>
+
+        </div>
+
+        <!-- Goal List -->
+
+        <ul id="goalList"></ul>
+
+        <!-- Empty State -->
+
+        <div
+            class="goal-empty"
+            id="goalEmpty"
+        >
+
+            <i class="fa-solid fa-bullseye"></i>
+
+            <h3>No Goals Yet</h3>
+
+            <p>
+                Add your first goal.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- ==========================
+     POMODORO TIMER
+========================== -->
+
+<section class="feature-page hidden" id="pomodoroPage">
+
+    <button class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i>
+        Dashboard
+    </button>
+
+    <div class="pomodoro-wrapper glass">
+
+        <h2>🍅 Pomodoro Timer</h2>
+
+        <p class="pomodoro-subtitle">
+            Stay focused. Take breaks. Repeat.
+        </p>
+
+        <div class="session-type" id="sessionType">
+            Work Session
+        </div>
+
+        <div class="timer-display" id="timerDisplay">
+            25:00
+        </div>
+
+        <div class="timer-buttons">
+
+            <button id="startTimer">
+                <i class="fa-solid fa-play"></i>
+                Start
+            </button>
+
+            <button id="pauseTimer">
+                <i class="fa-solid fa-pause"></i>
+                Pause
+            </button>
+
+            <button id="resetTimer">
+                <i class="fa-solid fa-rotate-left"></i>
+                Reset
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+    <!-- ==========================
+     QUOTES
+========================== -->
+
+<section class="feature-page hidden" id="quotesPage">
+
+    <button class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i>
+        Dashboard
+    </button>
+
+    <div class="quotes-wrapper glass">
+
+        <h2>💡 Motivation Quotes</h2>
+
+        <p class="quotes-subtitle">
+            One quote can change your mindset.
+        </p>
+
+        <div class="quote-box">
+
+            <i class="fa-solid fa-quote-left quote-icon"></i>
+
+            <blockquote id="quoteText">
+
+                Loading...
+
+            </blockquote>
+
+            <p id="quoteAuthor">
+
+                - Unknown
+
+            </p>
+
+        </div>
+
+        <button id="newQuoteButton">
+
+            <i class="fa-solid fa-rotate"></i>
+
+            New Quote
+
+        </button>
+
+    </div>
+
+</section>
+
+    <!-- ==========================
+     THEME SETTINGS
+========================== -->
+
+<section class="feature-page hidden" id="themePage">
+
+    <button class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i>
+        Dashboard
+    </button>
+
+    <div class="theme-wrapper glass">
+
+        <h2>🎨 Appearance</h2>
+
+        <p class="theme-subtitle">
+            Personalize your dashboard experience.
+        </p>
+
+        <div class="theme-card">
+
+            <div class="theme-info">
+
+                <i class="fa-solid fa-circle-half-stroke"></i>
+
+                <div>
+
+                    <h3>Dark Mode</h3>
+
+                    <p>Switch between Light and Dark theme.</p>
+
+                </div>
+
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="themeToggle"
+                >
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+    </div>
+
+</section>
+    <script src="script.js"></script>
+</body>
+</html>
