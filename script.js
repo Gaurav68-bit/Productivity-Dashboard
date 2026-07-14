@@ -61,26 +61,13 @@ backButtons.forEach((button) => {
   });
 });
 
-// ==========================================
-// PAGE LOADED
-// ==========================================
-
-/* ==========================================
-   TODO LIST - PART 2
-========================================== */
-
 const taskInput = document.getElementById("taskInput");
 const addTaskBtn = document.getElementById("addTaskBtn");
 const taskList = document.getElementById("taskList");
 const taskCount = document.getElementById("taskCount");
 const emptyState = document.getElementById("emptyState");
 
-// Stores all tasks
 let tasks = [];
-
-/* ----------------------------
-    Add Task
------------------------------ */
 
 function addTask() {
   const text = taskInput.value.trim();
@@ -105,9 +92,6 @@ function addTask() {
   renderTasks();
 }
 
-/* ----------------------------
-    Render Tasks
------------------------------ */
 
 function renderTasks() {
   taskList.innerHTML = "";
@@ -161,10 +145,6 @@ function renderTasks() {
   });
 }
 
-/* ----------------------------
-    Events
------------------------------ */
-
 addTaskBtn.addEventListener("click", addTask);
 
 taskInput.addEventListener("keydown", function (e) {
@@ -192,7 +172,6 @@ taskList.addEventListener("click", function (e) {
 
   const id = Number(taskElement.dataset.id);
 
-  /* Delete */
 
   if (e.target.closest(".delete-btn")) {
     tasks = tasks.filter((task) => task.id !== id);
@@ -202,7 +181,6 @@ taskList.addEventListener("click", function (e) {
     renderTasks();
   }
 
-  /* Edit */
 
   if (e.target.closest(".edit-btn")) {
     const task = tasks.find((task) => task.id === id);
@@ -234,25 +212,16 @@ taskList.addEventListener("change", function (e) {
   renderTasks();
 });
 
-/* ----------------------------
-    Initial Render
------------------------------ */
 
 loadTasks();
 
 renderTasks();
 
-/* ==========================================
-   DAILY PLANNER
-========================================== */
 
 const plannerContainer = document.getElementById("plannerContainer");
 
 const plannerData = JSON.parse(localStorage.getItem("planner")) || {};
 
-/* ------------------------------------------
-   Time Slots
-------------------------------------------- */
 
 const hours = [
   "6:00 AM",
@@ -274,9 +243,6 @@ const hours = [
   "10:00 PM",
 ];
 
-/* ------------------------------------------
-   Generate Planner
-------------------------------------------- */
 
 function createPlanner() {
   plannerContainer.innerHTML = "";
@@ -314,9 +280,7 @@ function createPlanner() {
 }
 
 createPlanner();
-/* ------------------------------------------
-   Save Planner
-------------------------------------------- */
+
 
 plannerContainer.addEventListener("click", function (e) {
   if (!e.target.classList.contains("save-slot")) return;
@@ -338,16 +302,12 @@ plannerContainer.addEventListener("click", function (e) {
   }, 1000);
 });
 
-/* ------------------------------------------
-   Highlight Current Hour
-------------------------------------------- */
 
 function highlightCurrentHour() {
   const currentHour = new Date().getHours();
 
   let plannerHour = currentHour;
 
-  // Our planner starts at 6 AM
 
   if (plannerHour >= 6 && plannerHour <= 22) {
     const index = plannerHour - 6;
@@ -366,9 +326,6 @@ function highlightCurrentHour() {
 
 highlightCurrentHour();
 
-/* ==========================================
-        DAILY GOALS
-========================================== */
 
 const goalInput = document.getElementById("goalInput");
 const addGoalBtn = document.getElementById("addGoalBtn");
@@ -502,8 +459,6 @@ goalList.addEventListener(
 
     const id = Number(item.dataset.id);
 
-    // Delete
-
     if (e.target.closest(".delete-goal")) {
       goals = goals.filter((goal) => goal.id !== id);
 
@@ -535,9 +490,6 @@ goalList.addEventListener(
 );
 renderGoals();
 
-/* ==========================================
-        POMODORO TIMER
-========================================== */
 
 const timerDisplay = document.getElementById("timerDisplay");
 
@@ -561,9 +513,6 @@ let isRunning = false;
 
 let isWorkSession = true;
 
-/* ---------------------
-   Display
----------------------- */
 
 function updateTimer() {
   const minutes = Math.floor(timeLeft / 60);
@@ -575,9 +524,6 @@ function updateTimer() {
 
 updateTimer();
 
-/* ---------------------
-   Start
----------------------- */
 
 startBtn.addEventListener("click", () => {
   if (isRunning) return;
@@ -615,9 +561,6 @@ startBtn.addEventListener("click", () => {
   }, 1000);
 });
 
-/* ---------------------
-   Pause
----------------------- */
 
 pauseBtn.addEventListener("click", () => {
   clearInterval(timer);
@@ -625,9 +568,6 @@ pauseBtn.addEventListener("click", () => {
   isRunning = false;
 });
 
-/* ---------------------
-   Reset
----------------------- */
 
 resetBtn.addEventListener("click", () => {
   clearInterval(timer);
@@ -643,9 +583,6 @@ resetBtn.addEventListener("click", () => {
   updateTimer();
 });
 
-/* ==========================================
-        QUOTES
-========================================== */
 
 const quoteText = document.getElementById("quoteText");
 
@@ -653,9 +590,6 @@ const quoteAuthor = document.getElementById("quoteAuthor");
 
 const newQuoteButton = document.getElementById("newQuoteButton");
 
-/* --------------------------------------
-   Fetch Quote
---------------------------------------- */
 const quote = document.querySelector("#quote");
 const author = document.querySelector("#author");
 async function getQuote() {
@@ -682,9 +616,6 @@ async function getQuote() {
   }
 }
 
-/* --------------------------------------
-   Events
---------------------------------------- */
 
 newQuoteButton.addEventListener(
   "click",
@@ -692,15 +623,9 @@ newQuoteButton.addEventListener(
   getQuote,
 );
 
-/* --------------------------------------
-   Initial Load
---------------------------------------- */
 
 getQuote();
 
-/* ==========================================
-        THEME
-========================================== */
 
 const themeToggle = document.getElementById("themeToggle");
 
